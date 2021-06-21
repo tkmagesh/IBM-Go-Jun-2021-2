@@ -1,16 +1,20 @@
+//closures
 package main
 
 import "fmt"
 
 func main() {
+	counter := getCounter()
 	fmt.Println(counter())
 	fmt.Println(counter())
 	fmt.Println(counter())
 	fmt.Println(counter())
 }
 
-func counter() int {
+func getCounter() func() int {
 	var count int
-	count += 1
-	return count
+	return func() int {
+		count += 1
+		return count
+	}
 }
