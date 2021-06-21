@@ -30,6 +30,7 @@ func main() {
 		fmt.Println(compute(100, 50))
 	*/
 
+	//passing functions as argument to another function
 	fmt.Println(compute(add, 100, 200))
 	fmt.Println(compute(subtract, 100, 200))
 	fmt.Println(compute(multiply, 100, 200))
