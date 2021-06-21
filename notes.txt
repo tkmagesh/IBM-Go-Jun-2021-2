@@ -103,3 +103,4 @@ If user option is 1 - 4, accept two number from the user and perform the operati
 
 functions
 1. variadic functions
+2. higher order functions
