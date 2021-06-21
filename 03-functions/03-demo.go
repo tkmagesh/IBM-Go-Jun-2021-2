@@ -8,10 +8,10 @@ func main() {
 	/* fn := func() {
 		fmt.Println("fn is invoked")
 	} */
-	var fn func() = func() {
+	var fn func(int) = func(n int) {
 		fmt.Println("fn is invoked")
 	}
-	fn()
+	fn(10)
 	//anonymous function
 	func(x int) {
 		fmt.Println("anonymous function invoked with arg : ", x)
@@ -35,6 +35,26 @@ func main() {
 	fmt.Println(compute(subtract, 100, 200))
 	fmt.Println(compute(multiply, 100, 200))
 	fmt.Println(compute(divide, 100, 200))
+
+	//function returned as a return value
+	adder := getAdder()
+	fmt.Println(adder(30, 40))
+
+	adderFor100 := getAdderFor(100)
+	fmt.Println(adderFor100(200))
+}
+
+//function returing another function
+func getAdder() func(int, int) int {
+	return func(x, y int) int {
+		return x + y
+	}
+}
+
+func getAdderFor(x int) func(int) int {
+	return func(y int) int {
+		return x + y
+	}
 }
 
 func compute(fn func(int, int) int, x int, y int) int {
