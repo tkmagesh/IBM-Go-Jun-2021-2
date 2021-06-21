@@ -89,3 +89,13 @@ Datatypes in Go
 
     Abstraction Type
         interface
+
+
+Assignment:
+Create a go program that displays the following menu
+1. add
+2. subtract
+3. multiply
+4. divide
+5. exit
+If user option is 1 - 4, accept two number from the user and perform the operation and print the result

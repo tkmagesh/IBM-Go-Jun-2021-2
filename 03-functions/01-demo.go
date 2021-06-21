@@ -1,0 +1,42 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println(add(100, 200))
+	//fmt.Println(divide(100, 7))
+	quotient, remainder := divide(100, 7)
+	fmt.Println(quotient, remainder)
+}
+
+/*
+func add(x int, y int) int {
+	return x + y
+}
+*/
+
+func add(x, y int) int {
+	return x + y
+}
+
+/*
+func divide(x, y int) (int, int) {
+	quotient := x / y
+	remainder := x % y
+	return quotient, remainder
+}
+*/
+
+/*
+func divide(x, y int) (quotient int, remainder int) {
+	quotient = x / y
+	remainder = x % y
+	return
+}
+*/
+
+func divide(x, y int) (quotient, remainder int) {
+	quotient = x / y
+	remainder = x % y
+	return
+}
