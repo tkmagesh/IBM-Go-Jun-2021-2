@@ -60,7 +60,8 @@ func main() {
 	/*
 		name, msg := "Magesh", "Have a nice day!"
 	*/
-	fmt.Println(name, msg)
+	//fmt.Println(name, msg)
+	fmt.Printf("Hi %s, %s\n", name, msg)
 }
 
 /* other functions */
