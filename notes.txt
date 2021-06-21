@@ -1,0 +1,55 @@
+Magesh Kuppan
+
+Schedule
+Commence    : 09:30
+Tea break   : 11:00 (for 20 mins)
+Lunch break : 13:00 (for 60 mins)
+Tea break   : 15:30 (for 20 mins)
+Windup      : 17:30
+
+Methodology
+    No powerpoints
+
+
+Name
+Total Experience
+Primary Skillset
+Experience in Golang (if any)
+Any interest book you read / shows you watched recently
+
+
+Why Golang?
+    Memory Efficient
+    Efficient Concurrency 
+    Performance equivalent to 'C' language
+    Easy to learn
+    Cloud friendly
+
+    Simplicity
+        25 keywords
+            package, import, var, func, if, for, switch, select, make, close, chan, range, return, break, continue, fallthrough, struct, interface, type, go, in, out 
+
+        No access modifiers (private, public, protected etc..)
+        No classes (Only structs & functions)
+        No inheritance (prefer composition over inheritance)
+        No exceptions (only errors)
+        No 'try catch finally' construct
+
+        Analysis Paralysis
+        Barry Shwartz 
+            The Paradox of Choice (TED )(Book)
+
+    Concurrency
+        Golang is built for Concurrency
+        language features 
+            go, chan, <-, select, close, range
+        Memory Efficient
+            Goroutine = 4KB vs OS thread = 8 MB
+            Thousands of goroutines can be spawned using 1 OS thread
+            Builtin in Scheduler
+
+    Cloud Native Friendly
+
+
+http://golang.org
+http://code.visualstudio.com 
