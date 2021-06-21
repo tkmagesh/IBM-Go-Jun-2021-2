@@ -6,7 +6,7 @@ import "fmt"
 /* import packages */
 
 /* package level variables */
-var name, msg = "Magesh", "Have a nice day!"
+//var name, msg = "Magesh", "Have a nice day!"
 
 /* package init function */
 
@@ -61,6 +61,12 @@ func main() {
 		name, msg := "Magesh", "Have a nice day!"
 	*/
 	//fmt.Println(name, msg)
+
+	var name, msg string
+	fmt.Println("Enter the name :")
+	fmt.Scanln(&name)
+	fmt.Println("Enter the message :")
+	fmt.Scanf("%q", &msg)
 	fmt.Printf("Hi %s, %s\n", name, msg)
 }
 
