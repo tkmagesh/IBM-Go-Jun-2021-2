@@ -99,3 +99,7 @@ Create a go program that displays the following menu
 4. divide
 5. exit
 If user option is 1 - 4, accept two number from the user and perform the operation and print the result
+
+
+functions
+1. variadic functions
