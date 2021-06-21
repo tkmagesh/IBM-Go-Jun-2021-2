@@ -155,4 +155,9 @@ func main() {
 	case 10:
 		fmt.Println("n <= 10")
 	}
+
+	x1 := '\n'
+	y1 := "\n"
+	fmt.Printf("Type of x is %T\n", x1)
+	fmt.Printf("Type of y is %T\n", y1)
 }
