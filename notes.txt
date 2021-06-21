@@ -53,3 +53,39 @@ Why Golang?
 
 http://golang.org
 http://code.visualstudio.com 
+
+Datatypes in Go
+    bool
+    string
+
+    int
+    int8
+    int16
+    int32
+    int64
+
+    uint
+    uint8
+    uint16
+    uint32
+    uint64
+
+    float32
+    float64
+
+    complex64 (real float32, imaginary float32)
+    complex128 (real float64, imaginary float64)
+
+    byte (alias uint8)
+    rune (alias for int32, represents 1 unicode character)
+
+    Collection Types
+        Array
+        Slice
+        Map
+
+    Complex Types
+        Struct
+
+    Abstraction Type
+        interface
