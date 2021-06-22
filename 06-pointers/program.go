@@ -22,12 +22,12 @@ func main() {
 	fmt.Println("After swaping", x, y)
 
 	nos := []int{10, 20, 30}
-	addValue(nos, 40)
+	addValue(&nos, 40)
 	fmt.Println(nos) //=> should print 10, 20, 30, 40
 }
 
-func addValue( /* fill in the blank */ ) {
-	/* fill in the blanks */
+func addValue(list *[]int, value int) {
+	*list = append(*list, value)
 }
 
 func increment(x *int) {
