@@ -1,9 +1,8 @@
-//error handling
+//panic & recovery
 package main
 
 import (
 	"fmt"
-	"runtime/debug"
 )
 
 func main() {
@@ -14,10 +13,10 @@ func main() {
 			//app is recovering from the panic
 			fmt.Println("Something went wrong! Contact the administrator..!!")
 			fmt.Println(r)
-			debug.PrintStack()
+			//debug.PrintStack()
 		}
 	}()
-	fmt.Println(add(100, 200))
+	//fmt.Println(add(100, 200))
 	quotient, remainder := divideClient(100, 0)
 	fmt.Println(quotient, remainder)
 
@@ -28,6 +27,9 @@ func add(x, y int) int {
 }
 
 func divideClient(x, y int) (quotient, remainder int) {
+	defer func() {
+		panic("panic from the deferred fn of divideClient")
+	}()
 	return divide(x, y)
 }
 
