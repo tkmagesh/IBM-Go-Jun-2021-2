@@ -1,3 +1,4 @@
+//deferred functions
 package main
 
 import "fmt"
