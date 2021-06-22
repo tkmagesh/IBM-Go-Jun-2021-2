@@ -8,16 +8,22 @@ func main() {
 }
 
 func f1() {
-	defer fmt.Println("[@defer-11] fn executed")
+	var msg string
+	defer func() {
+		fmt.Println("[@defer-11] fn executed")
+		fmt.Println(msg)
+	}()
 	defer fmt.Println("[@defer-12] fn executed")
 	defer fmt.Println("[@defer-13] fn executed")
 	fmt.Println("f1 invoked")
-	f2()
+	msg = f2()
+
 }
 
-func f2() {
+func f2() string {
 	defer fmt.Println("[@defer-21] fn executed")
 	defer fmt.Println("[@defer-22] fn executed")
 	defer fmt.Println("[@defer-23] fn executed")
 	fmt.Println("f2 invoked")
+	return "Message from f2"
 }
