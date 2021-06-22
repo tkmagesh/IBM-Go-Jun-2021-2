@@ -104,3 +104,34 @@ If user option is 1 - 4, accept two number from the user and perform the operati
 functions
 1. variadic functions
 2. higher order functions
+
+Modularity
+
+Modules
+Packages
+
+Pre go 1.13
+    GOPATH
+        bin
+        pkg
+        src
+            github.com
+                tkmagesh77
+                    myApp
+                        calculator
+                            calculator.go (package calculator)
+                        main.go
+                            import github.com/tkmagesh77/myApp/calculator
+
+When using modules
+myApp
+    go.mod
+        module myApp
+    calculator
+        calculator.go (package calculator)
+    main.go
+        import myApp/calculator
+
+
+To create a module
+    go mod init <module_name>
