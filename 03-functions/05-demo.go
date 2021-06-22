@@ -4,7 +4,14 @@ package main
 import "fmt"
 
 func main() {
-	counter := getCounter()
+	//counter := getCounter()
+	counter := func() func() int {
+		var count int
+		return func() int {
+			count += 1
+			return 1
+		}
+	}()
 	fmt.Println(counter())
 	fmt.Println(counter())
 	fmt.Println(counter())
