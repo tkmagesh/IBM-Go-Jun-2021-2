@@ -4,6 +4,13 @@ import "fmt"
 
 type Products []Product
 
+//implement sorting for products (should use sort.Sort())
+//Default sort - should sort the products by id
+//Sort by name
+//Sort by cost
+//Sort by Units
+//Sort by Category
+
 func (products *Products) AddProduct(product Product) {
 	*products = append(*products, product)
 }
