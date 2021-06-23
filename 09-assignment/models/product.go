@@ -10,6 +10,6 @@ type Product struct {
 	Category string
 }
 
-func (product Product) Format() string {
+func (product Product) String() string {
 	return fmt.Sprintf("Id = %d, Name = %s, Cost = %v, Units = %d, Category = %s\n", product.Id, product.Name, product.Cost, product.Units, product.Category)
 }

@@ -1,5 +1,7 @@
 package models
 
+import "fmt"
+
 type Products []Product
 
 func (products *Products) AddProduct(product Product) {
@@ -37,10 +39,10 @@ func (products Products) All(predicate func(Product) bool) bool {
 	return true
 }
 
-func (products Products) Format() string {
+func (products Products) String() string {
 	result := ""
 	for _, product := range products {
-		result += product.Format()
+		result += fmt.Sprint(product)
 	}
 	return result
 }

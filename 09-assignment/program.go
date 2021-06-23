@@ -20,7 +20,7 @@ func main() {
 	products.AddProduct(models.Product{104, "Scribble Pad", 20, 20, "Stationary"})
 
 	fmt.Println("Products List")
-	fmt.Println(products.Format())
+	fmt.Println(products)
 
 	fmt.Println("Index of stove => ", products.IndexOf(stove))
 	fmt.Println("Is stove included in the list => ", products.Includes(stove))
@@ -45,6 +45,6 @@ func main() {
 
 	stationaryProducts := products.Filter(stationaryProductPredicate)
 	fmt.Println("All stationary products from the list")
-	fmt.Println(stationaryProducts.Format())
+	fmt.Println(stationaryProducts)
 
 }
