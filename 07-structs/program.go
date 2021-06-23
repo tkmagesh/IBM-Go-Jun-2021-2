@@ -36,7 +36,9 @@ func main() {
 
 	//struct composition
 	//grapes := PerishableProduct{Prod : Product{105, "Grapes", 50, 20, "Food"}, Expiry: "2 Days"}
-	grapes := PerishableProduct{Product{105, "Grapes", 50, 20, "Food"}, "2 Days"}
+	//grapes := PerishableProduct{Product{105, "Grapes", 50, 20, "Food"}, "2 Days"}
+	//using the constructor utitlity function
+	grapes := NewPerishableProduct(105, "Grapes", 50, 20, "Food", "2 Days")
 	fmt.Println("Perishable Product (grapes) => ", grapes)
 
 	//applying discount for perishable product
@@ -47,4 +49,8 @@ func main() {
 //utility function
 func applyDiscount(product *Product, discount float32) {
 	product.Cost = product.Cost * ((100 - discount) / 100)
+}
+
+func NewPerishableProduct(id int, name string, cost float32, units int, category string, expiry string) *PerishableProduct {
+	return &PerishableProduct{Product{id, name, cost, units, category}, expiry}
 }
