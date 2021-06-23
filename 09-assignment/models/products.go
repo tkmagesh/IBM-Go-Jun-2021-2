@@ -49,11 +49,16 @@ func (products Products) Sort() {
 }
 
 func (products Products) SortByName() {
-	sort.Sort(SortByName{products})
+	//sort.Sort(SortByName{products})
+	sort.Slice(products, func(i, j int) bool {
+		return products[i].Name < products[j].Name
+	})
 }
 
 func (products Products) SortByCost() {
-	sort.Sort(SortByCost{products})
+	sort.Slice(products, func(i, j int) bool {
+		return products[i].Cost < products[j].Cost
+	})
 }
 
 func (products *Products) AddProduct(product Product) {
