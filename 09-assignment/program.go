@@ -7,7 +7,10 @@ import (
 
 func main() {
 	products := models.Products{}
+
 	stove := models.Product{102, "Stove", 5000, 5, "Utencil"}
+	anotherStove := models.Product{102, "Stove", 5000, 5, "Utencil"}
+	fmt.Println(stove == anotherStove) //?
 
 	products.AddProduct(models.Product{105, "Pen", 5, 50, "Stationary"})
 	products.AddProduct(models.Product{107, "Pencil", 2, 100, "Stationary"})
