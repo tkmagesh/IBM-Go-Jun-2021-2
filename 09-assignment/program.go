@@ -47,4 +47,16 @@ func main() {
 	fmt.Println("All stationary products from the list")
 	fmt.Println(stationaryProducts)
 
+	fmt.Println("Default sorting")
+	products.Sort()
+	fmt.Println(products)
+
+	fmt.Println("Sorting by name")
+	products.SortByName()
+	fmt.Println(products)
+
+	fmt.Println("Sorting by cost")
+	products.SortByCost()
+	fmt.Println(products)
+
 }

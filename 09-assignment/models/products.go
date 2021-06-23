@@ -1,6 +1,9 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Products []Product
 
@@ -10,6 +13,48 @@ type Products []Product
 //Sort by cost
 //Sort by Units
 //Sort by Category
+
+func (products Products) Len() int {
+	return len(products)
+}
+
+func (products Products) Swap(i, j int) {
+	products[i], products[j] = products[j], products[i]
+}
+
+func (products Products) Less(i, j int) bool {
+	return products[i].Id < products[j].Id
+}
+
+type SortByName struct {
+	Products
+}
+
+func (sortByName SortByName) Less(i, j int) bool {
+	return sortByName.Products[i].Name < sortByName.Products[j].Name
+}
+
+type SortByCost struct {
+	Products
+}
+
+func (sortByCost SortByCost) Less(i, j int) bool {
+	return sortByCost.Products[i].Cost < sortByCost.Products[j].Cost
+}
+
+// Swap swaps the elements with indexes i and j.
+
+func (products Products) Sort() {
+	sort.Sort(products)
+}
+
+func (products Products) SortByName() {
+	sort.Sort(SortByName{products})
+}
+
+func (products Products) SortByCost() {
+	sort.Sort(SortByCost{products})
+}
 
 func (products *Products) AddProduct(product Product) {
 	*products = append(*products, product)
