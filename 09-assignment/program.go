@@ -8,10 +8,11 @@ import (
 func main() {
 	products := models.Products{}
 	stove := models.Product{102, "Stove", 5000, 5, "Utencil"}
+
 	products.AddProduct(models.Product{105, "Pen", 5, 50, "Stationary"})
 	products.AddProduct(models.Product{107, "Pencil", 2, 100, "Stationary"})
 	products.AddProduct(models.Product{103, "Marker", 50, 20, "Utencil"})
-	products.AddProduct(stove)
+	products.AddProduct(models.Product{102, "Stove", 5000, 5, "Utencil"})
 	products.AddProduct(models.Product{101, "Kettle", 2500, 10, "Stationary"})
 	products.AddProduct(models.Product{104, "Scribble Pad", 20, 20, "Stationary"})
 
