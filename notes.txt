@@ -148,3 +148,28 @@ Aliquip magna irure eiusmod sit elit ipsum incididunt qui labore fugiat culpa ut
 
 Output:
 The max occurence by size of the word = 21 (word size = 3)
+
+
+
+
+products := []Product{
+    Product{105, "Pen", 5, 50, "Stationary"},
+    Product{107, "Pencil", 2, 100, "Stationary"},
+    Product{103, "Marker", 50, 20, "Utencil"},
+    Product{102, "Stove", 5000, 5, "Utencil"},
+    Product{101, "Kettle", 2500, 10, "Stationary"},
+    Product{104, "Scribble Pad", 20, 20, "Stationary"},
+}
+
+APIs
+    AddProduct()
+    IndexOf(product) => index of the given product ( -1 if doesnt exists)
+    Includes(product) => return true/false
+    Any(critera) => return true/false if any of the product in the list satisfies the given criteria
+        //Are there any stationary products?
+        //Are there any costly products (cost > 50) ?
+    All(critera) => return true/false if ALL the products in the list satisfies the given criteria
+        //Are all staionary products?
+    Filter(criteria) => filter the products by given critera
+        //filter all utencils
+        //filter cheap products
