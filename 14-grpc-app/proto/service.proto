@@ -17,6 +17,19 @@ message CalculatorResponse{
     int64 result = 1;
 }
 
+//for client streaming
+message AverageRequest{
+    int64 no = 1;
+}
+
+message AverageResponse{
+    int64 result = 1;
+}
+
 service AppServices{
+    //request & response
     rpc Add (CalculatorRequest) returns (CalculatorResponse);
+
+    //client streaming
+    rpc Average (stream AverageRequest) returns (AverageResponse);
 }
