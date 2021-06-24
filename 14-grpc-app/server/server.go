@@ -72,6 +72,30 @@ func isPrime(no int64) bool {
 	return true
 }
 
+func (s *Server) Greet(reqResStream proto.AppServices_GreetServer) error {
+	fmt.Println("Greet everyone function is invoked")
+	for {
+		req, err := reqResStream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			log.Fatalln(err)
+		}
+		greeting := req.GetGreeting()
+		firstName := greeting.GetFirstName()
+		lastName := greeting.GetLastName()
+		greetMsg := fmt.Sprintf("Hi %s %s, Have a nice day!", firstName, lastName)
+		res := &proto.GreetingResponse{Message: greetMsg}
+		sendErr := reqResStream.Send(res)
+		if sendErr != nil {
+			log.Fatalln(sendErr)
+			return sendErr
+		}
+	}
+	return nil
+}
+
 func main() {
 	listener, err := net.Listen("tcp", "localhost:52000")
 	if err != nil {

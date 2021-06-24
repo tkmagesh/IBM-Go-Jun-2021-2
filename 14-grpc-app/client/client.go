@@ -6,6 +6,7 @@ import (
 	"grpc-app/proto"
 	"io"
 	"log"
+	"time"
 
 	"google.golang.org/grpc"
 )
@@ -49,22 +50,64 @@ func main() {
 	*/
 
 	//server streaming
-	fmt.Println("Prime numbers between 7 and 63")
-	req := &proto.PrimeRequest{RangeStart: 7, RangeEnd: 63}
-	primeNoStream, e := client.GeneratePrimes(context.Background(), req)
-	if e != nil {
-		log.Fatalln(e)
-	}
-	for {
-		res, er := primeNoStream.Recv()
-		if er == io.EOF {
-			fmt.Println("All the prime numbers are received")
-			break
+	/*
+		fmt.Println("Prime numbers between 7 and 63")
+		req := &proto.PrimeRequest{RangeStart: 7, RangeEnd: 63}
+		primeNoStream, e := client.GeneratePrimes(context.Background(), req)
+		if e != nil {
+			log.Fatalln(e)
 		}
-		if er != nil {
-			log.Fatalln(er)
+		for {
+			res, er := primeNoStream.Recv()
+			if er == io.EOF {
+				fmt.Println("All the prime numbers are received")
+				break
+			}
+			if er != nil {
+				log.Fatalln(er)
+			}
+			fmt.Println("Prime No received : ", res.GetNo())
 		}
-		fmt.Println("Prime No received : ", res.GetNo())
-	}
+	*/
 
+	//bidirectional streaming
+	names := []proto.Greeting{
+		proto.Greeting{FirstName: "Magesh", LastName: "Kuppan"},
+		proto.Greeting{FirstName: "Ramesh", LastName: "Jayaraman"},
+		proto.Greeting{FirstName: "Suresh", LastName: "Kannan"},
+		proto.Greeting{FirstName: "Guru", LastName: "Raghav"},
+	}
+	stream, err := client.Greet(context.Background())
+	if err != nil {
+		log.Fatalln(err)
+	}
+	//send the messages concurrently
+	go func() {
+		for _, greetingName := range names {
+			req := &proto.GreetingRequest{
+				Greeting: &greetingName,
+			}
+			fmt.Println("Sending req : ", greetingName.FirstName, greetingName.LastName)
+			stream.Send(req)
+			time.Sleep(500 * time.Millisecond)
+		}
+		stream.CloseSend()
+	}()
+	closeCh := make(chan string)
+	//recieve the responses concurrently
+	go func() {
+		for {
+			res, err := stream.Recv()
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				log.Fatalln(err)
+			}
+			fmt.Println("Server response : ", res.GetMessage())
+		}
+		closeCh <- "done"
+	}()
+
+	<-closeCh
 }
