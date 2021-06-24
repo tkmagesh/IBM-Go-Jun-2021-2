@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net"
+	"time"
 
 	"google.golang.org/grpc"
 )
@@ -14,6 +15,7 @@ import (
 type Server struct {
 }
 
+//request & response
 func (s *Server) Add(ctx context.Context, req *proto.CalculatorRequest) (*proto.CalculatorResponse, error) {
 	x := req.GetX()
 	y := req.GetY()
@@ -23,6 +25,7 @@ func (s *Server) Add(ctx context.Context, req *proto.CalculatorRequest) (*proto.
 	return response, nil
 }
 
+//client streaming
 func (s *Server) Average(reqStream proto.AppServices_AverageServer) error {
 	var sum int64
 	var count int64
@@ -43,6 +46,30 @@ func (s *Server) Average(reqStream proto.AppServices_AverageServer) error {
 		count++
 	}
 	return nil
+}
+
+//server streaming
+func (s *Server) GeneratePrimes(req *proto.PrimeRequest, serverStream proto.AppServices_GeneratePrimesServer) error {
+	rangeStart := req.GetRangeStart()
+	rangeEnd := req.GetRangeEnd()
+	for no := rangeStart; no <= rangeEnd; no++ {
+		if isPrime(no) {
+			fmt.Println("Sending prime no : ", no)
+			res := &proto.PrimeResponse{No: no}
+			serverStream.Send(res)
+			time.Sleep(500 * time.Millisecond)
+		}
+	}
+	return nil
+}
+
+func isPrime(no int64) bool {
+	for i := int64(2); i <= (no / 2); i++ {
+		if no%i == 0 {
+			return false
+		}
+	}
+	return true
 }
 
 func main() {
