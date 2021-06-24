@@ -180,3 +180,29 @@ io related packages
     bufio
     os
 
+Why microservices as a web api?
+
+
+101Pen10200Stationary
+101Pencil10200Stationary
+
+50
+xml = 350
+json = 211
+
+grpc
+    - request & response
+    - client streaming
+    - server streaming
+    - client & server streaming
+
+protocol buffers
+
+tools for gRPC
+
+go get -u github.com/golang/protobuf/protoc-gen-go
+OR
+brew install protobuf
+
+in the application folder
+    go get -u google.golang.org/grpc

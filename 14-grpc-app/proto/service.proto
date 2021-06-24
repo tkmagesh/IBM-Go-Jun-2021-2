@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "/proto";
+
+//for request & response pattern
+
+//request data
+message CalculatorRequest {
+    int64 x = 1;
+    int64 y = 2;
+}
+
+//response data
+message CalculatorResponse{
+    int64 result = 1;
+}
+
+service AppServices{
+    rpc Add (CalculatorRequest) returns (CalculatorResponse);
+}
