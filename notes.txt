@@ -206,3 +206,6 @@ brew install protobuf
 
 in the application folder
     go get -u google.golang.org/grpc
+
+to generate the proxy & stub
+protoc ./proto/service.proto --go_out=plugins=grpc:.
