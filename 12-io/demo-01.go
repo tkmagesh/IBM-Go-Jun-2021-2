@@ -9,6 +9,7 @@ import (
 type AlphaReader string
 
 func (alphaReader AlphaReader) Read(buffer []byte) (n int, err error) {
+	fmt.Println("size of the buffer = ", len(buffer))
 	count := 0
 	for i := 0; i < len(alphaReader); i++ {
 		if (alphaReader[i] >= 'A' && alphaReader[i] <= 'Z') || (alphaReader[i] >= 'a' && alphaReader[i] <= 'z') {
@@ -39,6 +40,7 @@ func copy(writer io.Writer, reader io.Reader) (int, error) {
 
 func main() {
 	alphaReader := AlphaReader("Hi, How are you?")
+	//copy(os.Stdout, alphaReader)
 	io.Copy(os.Stdout, alphaReader)
 	fmt.Println("Done")
 }
